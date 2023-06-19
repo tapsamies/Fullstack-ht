@@ -1,18 +1,19 @@
 ```mermaid
 sequenceDiagram
-participant browser
-participant server
+    participant Browser
+    participant Server
+    Browser->>Server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+    Browser-->>Server: data
+    Browser->>+Server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    Server-->>-Browser: HTML document
+    Browser->>+Server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    Server-->>-Browser: the css file
+    Browser->>+Server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    Server-->>-Browser: the Javascript file
+    Note over Server,Browser: browser starts to execute Javascript, which in turn fetches the json from the server
+    Browser->>+Server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    Server-->>-Browser: the contents in json format
+    Note over Server,Browser: browser executes the callback function that renders the notes
 
-browser->>+server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-browser->>-server: data
-browser->>+server: GET https://studies.cs.helsinki.fi/exampleapp/notes
-server-->>-browser: HTML document
-browser->>+server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-server -->>-browser: the css file
-browser ->>+server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
-server -->>- browser: the Javascript file
-note over server,browser: browser starts to execute Javascript, which in turn fetches the json from the server
-browser ->>+ server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-server -->>- browser: the contents in json format
-note over server.browser: browser executes the callback function that renders the notes
 ```
+    
