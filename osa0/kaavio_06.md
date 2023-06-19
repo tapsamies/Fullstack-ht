@@ -10,7 +10,7 @@ browser ->>+ server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
 server -->>- browser: the Javascript file
 browser ->>+ server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
 server -->>- browser: content of the json
-browser ->>+ server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
-browser -->>- server: content of the entry
+browser ->> server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+browser -->> server: content of the entry
 ```
 
