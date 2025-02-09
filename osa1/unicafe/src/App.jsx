@@ -12,7 +12,7 @@ const App = () => {
       <Button onClick={() => setGood(good + 1)} text="good" />
       <Button onClick={() => setNeutral(neutral + 1)} text="neutral" />
       <Button onClick={() => setBad(bad + 1)} text="bad" />
-      <Stats value={[good, neutral, bad]} />
+      <Stats value={[good, neutral, bad]} all={good + neutral + bad} />
     </div>
   );
 };
@@ -39,6 +39,9 @@ const Stats = (props) => {
       <p>good {props.value[0]}</p>
       <p>neutral {props.value[1]}</p>
       <p>bad {props.value[2]} </p>
+      <p>all {props.all} </p>
+      <p>average {(props.value[0] - props.value[2]) / props.all}</p>
+      <p>positive {(props.value[0] / props.all) * 100} %</p>
     </div>
   );
 };
